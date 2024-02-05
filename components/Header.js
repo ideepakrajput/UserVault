@@ -1,13 +1,14 @@
 import React from 'react';
 
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { View, Text, StyleSheet, TouchableOpacity, BackHandler } from 'react-native';
+import customFont from '../utils/customFont';
 
-const Header = () => {
+const Header = ({ navigation }) => {
+
   return (
     <View style={styles.headerContainer}>
-      <Text style={[styles.text, { color: "#ffffff", fontSize: 20 }]}>Wade Warren</Text>
-      <TouchableOpacity style={styles.button}>
+      <Text style={[styles.text, customFont.Onest, { color: "#ffffff", fontSize: 20 }]}>Wade Warren</Text>
+      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("Images")}>
         <Text style={styles.text}>End</Text>
       </TouchableOpacity>
     </View>

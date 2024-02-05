@@ -5,15 +5,15 @@ import GlobalClosedButton from '../components/GlobalClosedButton';
 import BottomAction from '../components/BottomAction';
 import { StyleSheet, View } from 'react-native';
 
-const Home = () => {
+const Home = ({ navigation }) => {
     return (
-        <View style={{ justifyContent: "space-between" }}>
+        <View style={{ flex: 1, justifyContent: "space-between", alignItems: "center", backgroundColor: "#3E6975", gap: 32 }}>
             <View style={styles.container}>
-                <Header />
+                <Header navigation={navigation} />
                 <CameraContainer />
                 <GlobalClosedButton />
             </View>
-            <View style={{ justifyContent: "flex-end" }}>
+            <View>
                 <BottomAction />
             </View>
         </View>
@@ -22,8 +22,8 @@ const Home = () => {
 
 const styles = StyleSheet.create({
     container: {
-        padding: 32,
-        backgroundColor: "#3E6975",
+        paddingHorizontal: 32,
+        paddingTop: 32,
     },
 });
 

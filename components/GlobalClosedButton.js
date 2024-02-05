@@ -1,19 +1,23 @@
+import { useState } from "react";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native"
-import { SafeAreaView } from "react-native-safe-area-context"
+import { useDispatch, useSelector } from "react-redux";
+import { statusActions } from "../store/slices/status";
 
-function GlobalClosedButton() {
+function GlobalClosedButton({ globalCount, closeUpCount }) {
+    const status = useSelector(store => store.status);
+    const dispatch = useDispatch();
+
     return (
         <View style={styles.container}>
-            <TouchableOpacity style={[styles.button, styles.active]}>
+            <TouchableOpacity style={[styles.button, [status.isGlobal && styles.active]]} onPress={() => dispatch(statusActions.toggleIsGlobal(true))}>
                 <Text style={styles.text}>
-                    Global
+                    Global {globalCount ? `(${globalCount})` : ``}
                 </Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.button}>
+            <TouchableOpacity style={[styles.button, [!status.isGlobal && styles.active]]} onPress={() => dispatch(statusActions.toggleIsGlobal(false))}>
                 <Text style={styles.text}>
-                    Close Up
+                    Close Up {closeUpCount ? `(${closeUpCount})` : ``}
                 </Text>
-
             </TouchableOpacity>
         </View>
     )
@@ -32,11 +36,11 @@ const styles = StyleSheet.create({
     button: {
         paddingVertical: 8,
         borderRadius: 50,
-        width: "50%",
+        width: "48%",
+        margin: 4
     },
     active: {
         backgroundColor: "#F3AF8E",
-        margin: 4,
     },
     text: {
         fontSize: 16,
