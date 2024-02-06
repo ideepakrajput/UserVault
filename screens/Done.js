@@ -3,12 +3,14 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { imagesActions } from '../store/slices/images';
 import { useDispatch } from 'react-redux';
 import Feather from 'react-native-vector-icons/Feather';
+import { statusActions } from '../store/slices/status';
 
 const Done = ({ navigation }) => {
     const dispatch = useDispatch();
     const goToHome = () => {
         navigation.navigate("Home");
         dispatch(imagesActions.reset());
+        dispatch(statusActions.reset());
     }
     return (
         <SafeAreaView style={{ flex: 1, justifyContent: "center", alignItems: "center", backgroundColor: "#3E6975" }}>

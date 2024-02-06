@@ -35,6 +35,7 @@ const ImageContainer = ({ globalCloseUp }) => {
                     </View>
                 </View>
             }
+
             {images[globalCloseUp].left &&
                 <View>
                     <Image style={styles.images} source={{ uri: `file://${images[globalCloseUp].left}` }}></Image>

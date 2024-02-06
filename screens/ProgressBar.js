@@ -6,7 +6,7 @@ import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { addDoc, collection, onSnapshot } from "firebase/firestore";
 import { db, storage } from "../firebase/firebaseConfig";
 import { statusActions } from "../store/slices/status";
-import * as Progress from 'react-native-progress';
+import ProgressBarIndicator from "../components/ProgressBarIndicator";
 
 function ProgressBar({ navigation }) {
     const images = useSelector(store => store.images)
@@ -14,7 +14,6 @@ function ProgressBar({ navigation }) {
     const dispatch = useDispatch();
 
     const [progress, setProgress] = useState(0);
-    const [progress1, setProgress1] = useState(0);
 
 
     useEffect(() => {
@@ -44,11 +43,15 @@ function ProgressBar({ navigation }) {
                 uploadTask.on(
                     "state_changed",
                     (snapshot) => {
-                        const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-                        setProgress(progress.toFixed());
+                        const progressData = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                        setProgress(progressData.toFixed());
+                    },
+                    (error) => {
+
                     },
                     () => {
                         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+                            console.log(downloadURL);
                             saveRecord(downloadURL, new Date().toISOString());
                             uploadImageSequentially(imagePaths, currentIndex + 1);
                         });
@@ -75,13 +78,9 @@ function ProgressBar({ navigation }) {
         };
     }
 
-    useEffect(() => {
-        setProgress1(Math.abs(((progress - 1) / 99).toFixed(1)))
-    }, [progress])
-
     return (
         <SafeAreaView style={{ flex: 1, justifyContent: "center", alignItems: "center", backgroundColor: "#3E6975", gap: 8 }}>
-            <Progress.Bar progress={progress1} width={300} unfilledColor="rgba(183, 229, 228, 1)" borderWidth={0} color="rgba(243, 175, 142, 1)" height={10} borderRadius={50} animationType="decay" />
+            <ProgressBarIndicator progress={progress} />
             <View>
                 <Text style={styles.text}>{progress}% in progress</Text>
             </View>
