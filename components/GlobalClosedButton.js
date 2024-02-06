@@ -11,12 +11,12 @@ function GlobalClosedButton({ globalCount, closeUpCount }) {
         <View style={styles.container}>
             <TouchableOpacity style={[styles.button, [status.isGlobal && styles.active]]} onPress={() => dispatch(statusActions.toggleIsGlobal(true))}>
                 <Text style={styles.text}>
-                    Global {globalCount ? `(${globalCount})` : ``}
+                    Global {typeof (globalCount) === 'number' && `(${globalCount})`}
                 </Text>
             </TouchableOpacity>
             <TouchableOpacity style={[styles.button, [!status.isGlobal && styles.active]]} onPress={() => dispatch(statusActions.toggleIsGlobal(false))}>
                 <Text style={styles.text}>
-                    Close Up {closeUpCount ? `(${closeUpCount})` : ``}
+                    Close Up {typeof (closeUpCount) === 'number' && `(${closeUpCount})`}
                 </Text>
             </TouchableOpacity>
         </View>
@@ -45,6 +45,7 @@ const styles = StyleSheet.create({
     text: {
         fontSize: 16,
         textAlign: "center",
+        fontFamily: "Onest",
         fontWeight: "bold",
         color: "#3E6975"
     },

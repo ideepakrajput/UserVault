@@ -1,23 +1,24 @@
 import { createSlice } from "@reduxjs/toolkit";
+const initialState = {
+    global: {
+        top: '',
+        frontal: '',
+        left: '',
+        right: '',
+    },
+    closeUp: {
+        top: '',
+        frontal: '',
+        left: '',
+        right: '',
+    },
+    globalCount: 0,
+    closeUpCount: 0,
+};
 
 const imagesSlice = createSlice({
     name: "images",
-    initialState: {
-        global: {
-            top: '',
-            frontal: '',
-            left: '',
-            right: '',
-        },
-        closeUp: {
-            top: '',
-            frontal: '',
-            left: '',
-            right: '',
-        },
-        globalCount: 0,
-        closeUpCount: 0,
-    },
+    initialState,
     reducers: {
         uploadGlobalTop: (state, action) => {
             state.global.top = action.payload;
@@ -50,6 +51,9 @@ const imagesSlice = createSlice({
         uploadCloseUpRight: (state, action) => {
             state.closeUp.right = action.payload;
             state.closeUpCount += 1;
+        },
+        reset: () => {
+            return initialState;
         },
     }
 })

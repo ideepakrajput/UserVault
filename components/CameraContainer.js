@@ -11,13 +11,9 @@ function CameraContainer() {
     const camera = useRef(null);
     const device = useCameraDevice('front');
 
-    const images = useSelector(store => store.images);
     const status = useSelector(store => store.status);
 
     const dispatch = useDispatch();
-
-    console.log(images);
-    console.log(status);
 
 
     useEffect(() => {

@@ -1,22 +1,29 @@
-import { StyleSheet, Text, View } from "react-native"
-import { SafeAreaView } from "react-native-safe-area-context"
+import React from "react";
+import { View } from "react-native";
+import Svg, { Rect } from "react-native-svg";
 
-function ProgressBar() {
+export default function ProgressBar({ progress = 60 }) {
+    const barWidth = "230";
+    const progressWidth = (progress / 100) * barWidth;
+
     return (
-        <SafeAreaView style={{ flex: 1, justifyContent: "center", alignItems: "center", backgroundColor: "#3E6975" }}>
-            <View>
-                <Text style={styles.text}>{`45%`} in progress</Text>
-            </View>
-        </SafeAreaView>
-    )
+        <View>
+            <Svg width={barWidth} height="7">
+                <Rect
+                    width={barWidth}
+                    height={"100%"}
+                    fill={"#eee"}
+                    rx={3.5}
+                    ry={3.5}
+                />
+                <Rect
+                    width={progressWidth}
+                    height={"100%"}
+                    fill={"#3478F6"}
+                    rx={3.5}
+                    ry={3.5}
+                />
+            </Svg>
+        </View>
+    );
 }
-
-const styles = StyleSheet.create({
-    text: {
-        fontSize: 16,
-        fontWeight: "600",
-        color: "#B7E5E4E5"
-    },
-});
-
-export default ProgressBar

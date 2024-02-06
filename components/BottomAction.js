@@ -10,26 +10,26 @@ function BottomAction() {
     return (
         <ScrollView horizontal={true}>
             <View style={styles.container}>
-                <TouchableOpacity style={[styles.imageButton, [status.bottomTab === 'TOP' && styles.active]]} onPress={() => dispatch(statusActions.setBottomTab('TOP'))}>
+                <TouchableOpacity style={[styles.imageButton, [status.bottomTab === 'TOP' && styles.active], [status.bottomTab === 'LEFT' && { borderTopRightRadius: 30 }]]} onPress={() => dispatch(statusActions.setBottomTab('TOP'))}>
                     <Image style={styles.image} source={require("../assets/images/image2.png")}>
                     </Image>
-                    <Text style={[styles.text, styles.activeText]}>Top</Text>
+                    <Text style={[status.bottomTab === 'TOP' ? styles.activeText : styles.text]}>Top</Text>
                 </TouchableOpacity>
                 {/* <View style={styles.overlay}><Text style={styles.overlayText}>Uploading</Text></View> */}
-                <TouchableOpacity style={[styles.imageButton, [status.bottomTab === 'LEFT' && styles.active]]} onPress={() => dispatch(statusActions.setBottomTab('LEFT'))}>
+                <TouchableOpacity style={[styles.imageButton, [status.bottomTab === 'LEFT' && styles.active], [status.bottomTab === 'TOP' && { borderTopLeftRadius: 30 }, [status.bottomTab === 'FRONTAL' && { borderTopRightRadius: 30 }]]]} onPress={() => dispatch(statusActions.setBottomTab('LEFT'))}>
                     <Image style={styles.image} source={require("../assets/images/image3.png")}>
                     </Image>
-                    <Text style={styles.text}>Left</Text>
+                    <Text style={[status.bottomTab === 'LEFT' ? styles.activeText : styles.text]}>Left</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={[styles.imageButton, [status.bottomTab === 'FRONTAL' && styles.active]]} onPress={() => dispatch(statusActions.setBottomTab('FRONTAL'))}>
+                <TouchableOpacity style={[styles.imageButton, [status.bottomTab === 'FRONTAL' && styles.active], [status.bottomTab === 'LEFT' && { borderTopLeftRadius: 30 }], [status.bottomTab === 'RIGHT' && { borderTopRightRadius: 30 }]]} onPress={() => dispatch(statusActions.setBottomTab('FRONTAL'))}>
                     <Image style={styles.image} source={require("../assets/images/image1.png")}>
                     </Image>
-                    <Text style={styles.text}>Frontal</Text>
+                    <Text style={[status.bottomTab === 'FRONTAL' ? styles.activeText : styles.text]}>Frontal</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={[styles.imageButton, [status.bottomTab === 'RIGHT' && styles.active]]} onPress={() => dispatch(statusActions.setBottomTab('RIGHT'))}>
+                <TouchableOpacity style={[styles.imageButton, [status.bottomTab === 'RIGHT' && styles.active], [status.bottomTab === 'FRONTAL' && { borderTopLeftRadius: 30 }]]} onPress={() => dispatch(statusActions.setBottomTab('RIGHT'))}>
                     <Image style={styles.image} source={require("../assets/images/image4.png")}>
                     </Image>
-                    <Text style={styles.text}>Right</Text>
+                    <Text style={[status.bottomTab === 'RIGHT' ? styles.activeText : styles.text]}>Right</Text>
                 </TouchableOpacity>
             </View>
         </ScrollView >
@@ -43,7 +43,8 @@ const styles = StyleSheet.create({
     imageButton: {
         padding: 16,
         backgroundColor: "#1A3033",
-        position: "relative"
+        position: "relative",
+        gap: 8
     },
     image: {
         height: 100,
@@ -54,10 +55,13 @@ const styles = StyleSheet.create({
     },
     activeText: {
         color: "#ffffff",
+        fontFamily: "Onest",
+        alignSelf: "center",
+        fontWeight: "700"
     },
     text: {
-        fontSize: 20,
-        fontWeight: "bold",
+        fontSize: 14,
+        fontWeight: "400",
         alignSelf: "center",
         color: "#B7E5E4",
     },
