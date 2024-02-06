@@ -15,7 +15,6 @@ function BottomAction() {
                     </Image>
                     <Text style={[status.bottomTab === 'TOP' ? styles.activeText : styles.text]}>Top</Text>
                 </TouchableOpacity>
-                {/* <View style={styles.overlay}><Text style={styles.overlayText}>Uploading</Text></View> */}
                 <TouchableOpacity style={[styles.imageButton, [status.bottomTab === 'LEFT' && styles.active], [status.bottomTab === 'TOP' && { borderTopLeftRadius: 30 }, [status.bottomTab === 'FRONTAL' && { borderTopRightRadius: 30 }]]]} onPress={() => dispatch(statusActions.setBottomTab('LEFT'))}>
                     <Image style={styles.image} source={require("../assets/images/image3.png")}>
                     </Image>

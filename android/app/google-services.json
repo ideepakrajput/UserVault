@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1076329954914",
+    "project_id": "uservault-deepak",
+    "storage_bucket": "uservault-deepak.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1076329954914:android:503a418f01a1ed24325b3b",
+        "android_client_info": {
+          "package_name": "com.uservault"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDUpRbD-I_YQfH1nCrlw_jg1MMP8xmZ9F0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,13 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
-
+const initialState = {
+    uploading: false,
+    uploaded: false,
+    bottomTab: 'TOP',
+    isGlobal: true,
+};
 const statusSlice = createSlice({
     name: "status",
-    initialState: {
-        uploading: false,
-        uploaded: false,
-        bottomTab: 'TOP',
-        isGlobal: true,
-    },
+    initialState,
     reducers: {
         setUploading: (state, action) => {
             state.uploading = action.payload;
@@ -20,6 +20,9 @@ const statusSlice = createSlice({
         },
         toggleIsGlobal: (state, action) => {
             state.isGlobal = action.payload;
+        },
+        reset: () => {
+            return initialState
         }
     }
 })

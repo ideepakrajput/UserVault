@@ -7,51 +7,43 @@ const ImageContainer = ({ globalCloseUp }) => {
     const images = useSelector(store => store.images)
     return (
         <>
-            <View>
-                {images[globalCloseUp].frontal &&
-                    <>
-                        <Image style={styles.images} source={{ uri: `file://${images[globalCloseUp].frontal}` }}></Image>
-                        <View style={styles.overlay}>
-                            <Icon name="checkbox-outline" size={40} color={"rgba(255, 255, 255, 1)"} style={{ fontWeight: "bold" }} />
-                            <Text style={styles.overlayText}>FRONTAL</Text>
-                        </View>
-                    </>
-                }
-            </View>
-            <View>
-                {images[globalCloseUp].top &&
-                    <>
-                        <Image style={styles.images} source={{ uri: `file://${images[globalCloseUp].top}` }}></Image>
-                        <View style={styles.overlay}>
-                            <Icon name="checkbox-outline" size={40} color={"rgba(255, 255, 255, 1)"} style={{ fontWeight: "bold" }} />
-                            <Text style={styles.overlayText}>TOP</Text>
-                        </View>
-                    </>
-                }
-            </View>
+            {images[globalCloseUp].frontal &&
+                <View>
+                    <Image style={styles.images} source={{ uri: `file://${images[globalCloseUp].frontal}` }}></Image>
+                    <View style={styles.overlay}>
+                        <Icon name="checkbox-outline" size={40} color={"rgba(255, 255, 255, 1)"} style={{ fontWeight: "bold" }} />
+                        <Text style={styles.overlayText}>FRONTAL</Text>
+                    </View>
+                </View>
+            }
+            {images[globalCloseUp].top &&
+                <View>
+                    <Image style={styles.images} source={{ uri: `file://${images[globalCloseUp].top}` }}></Image>
+                    <View style={styles.overlay}>
+                        <Icon name="checkbox-outline" size={40} color={"rgba(255, 255, 255, 1)"} style={{ fontWeight: "bold" }} />
+                        <Text style={styles.overlayText}>TOP</Text>
+                    </View>
+                </View>
+            }
 
-            <View>
-                {images[globalCloseUp].right &&
-                    <>
-                        <Image style={styles.images} source={{ uri: `file://${images[globalCloseUp].right}` }}></Image>
-                        <View style={styles.overlay}>
-                            <Icon name="checkbox-outline" size={40} color={"rgba(255, 255, 255, 1)"} style={{ fontWeight: "bold" }} />
-                            <Text style={styles.overlayText}>RIGHT</Text>
-                        </View>
-                    </>
-                }
-            </View>
-            <View>
-                {images[globalCloseUp].left &&
-                    <>
-                        <Image style={styles.images} source={{ uri: `file://${images[globalCloseUp].left}` }}></Image>
-                        <View style={styles.overlay}>
-                            <Icon name="checkbox-outline" size={40} color={"rgba(255, 255, 255, 1)"} style={{ fontWeight: "bold" }} />
-                            <Text style={styles.overlayText}>LEFT</Text>
-                        </View>
-                    </>
-                }
-            </View>
+            {images[globalCloseUp].right &&
+                <View>
+                    <Image style={styles.images} source={{ uri: `file://${images[globalCloseUp].right}` }}></Image>
+                    <View style={styles.overlay}>
+                        <Icon name="checkbox-outline" size={40} color={"rgba(255, 255, 255, 1)"} style={{ fontWeight: "bold" }} />
+                        <Text style={styles.overlayText}>RIGHT</Text>
+                    </View>
+                </View>
+            }
+            {images[globalCloseUp].left &&
+                <View>
+                    <Image style={styles.images} source={{ uri: `file://${images[globalCloseUp].left}` }}></Image>
+                    <View style={styles.overlay}>
+                        <Icon name="checkbox-outline" size={40} color={"rgba(255, 255, 255, 1)"} style={{ fontWeight: "bold" }} />
+                        <Text style={styles.overlayText}>LEFT</Text>
+                    </View>
+                </View>
+            }
         </>
     )
 }

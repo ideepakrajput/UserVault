@@ -13,7 +13,7 @@ const App = () => {
   return (
     <Provider store={store}>
       <NavigationContainer>
-        <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName="ProgressBar">
+        <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName="Home">
           <Stack.Screen name='Home' component={Home} />
           <Stack.Screen name='Images' component={Images} />
           <Stack.Screen name='ProgressBar' component={ProgressBar} />
