@@ -1,8 +1,9 @@
 import { useEffect, useRef, useState } from "react";
-import { ActivityIndicator, Image, StyleSheet, TouchableOpacity, View } from "react-native";
+import { ActivityIndicator, Dimensions, Image, StyleSheet, TouchableOpacity, View } from "react-native";
 import { Camera, useCameraDevice, useCameraPermission } from "react-native-vision-camera";
 import { useDispatch, useSelector } from "react-redux";
 import { imagesActions } from "../store/slices/images";
+import { statusActions } from "../store/slices/status";
 
 function CameraContainer() {
     const { hasPermission, requestPermission } = useCameraPermission();
@@ -15,10 +16,13 @@ function CameraContainer() {
 
     const dispatch = useDispatch();
 
+    const { height } = Dimensions.get("screen");
+    const globalCloseUp = status.isGlobal ? "global" : "closeUp";
+    const bottomTab = status[globalCloseUp].bottomTab;
 
     useEffect(() => {
         setImageData('');
-    }, [status.bottomTab, status.isGlobal])
+    }, [bottomTab, status.isGlobal])
 
     useEffect(() => {
         if (!hasPermission)
@@ -27,36 +31,51 @@ function CameraContainer() {
 
     if (device == null) return <ActivityIndicator />
 
-
     const takePhoto = async () => {
         const file = await camera.current.takePhoto();
         setImageData(file.path);
 
         if (status.isGlobal) {
-            if (status.bottomTab === 'TOP') {
+            if (bottomTab === 'TOP') {
                 dispatch(imagesActions.uploadGlobalTop(file.path));
-            } else if (status.bottomTab === 'FRONTAL') {
+                dispatch(statusActions.setBottomTab('LEFT'));
+                dispatch(statusActions.setUploading(true));
+            } else if (bottomTab === 'FRONTAL') {
                 dispatch(imagesActions.uploadGlobalFrontal(file.path));
-            } else if (status.bottomTab === 'LEFT') {
+                dispatch(statusActions.setBottomTab('RIGHT'));
+                dispatch(statusActions.setUploading(true));
+            } else if (bottomTab === 'LEFT') {
                 dispatch(imagesActions.uploadGlobalLeft(file.path));
-            } else if (status.bottomTab === 'RIGHT') {
+                dispatch(statusActions.setBottomTab('FRONTAL'));
+                dispatch(statusActions.setUploading(true));
+            } else if (bottomTab === 'RIGHT') {
                 dispatch(imagesActions.uploadGlobalRight(file.path));
+                dispatch(statusActions.setBottomTab('NONE'));
+                dispatch(statusActions.setUploading(true));
             }
         } else {
-            if (status.bottomTab === 'TOP') {
+            if (bottomTab === 'TOP') {
                 dispatch(imagesActions.uploadCloseUpTop(file.path));
-            } else if (status.bottomTab === 'FRONTAL') {
+                dispatch(statusActions.setBottomTab('LEFT'));
+                dispatch(statusActions.setUploading(true));
+            } else if (bottomTab === 'FRONTAL') {
                 dispatch(imagesActions.uploadCloseUpFrontal(file.path));
-            } else if (status.bottomTab === 'LEFT') {
+                dispatch(statusActions.setBottomTab('RIGHT'));
+                dispatch(statusActions.setUploading(true));
+            } else if (bottomTab === 'LEFT') {
                 dispatch(imagesActions.uploadCloseUpLeft(file.path));
-            } else if (status.bottomTab === 'RIGHT') {
+                dispatch(statusActions.setBottomTab('FRONTAL'));
+                dispatch(statusActions.setUploading(true));
+            } else if (bottomTab === 'RIGHT') {
                 dispatch(imagesActions.uploadCloseUpRight(file.path));
+                dispatch(statusActions.setBottomTab('NONE'));
+                dispatch(statusActions.setUploading(true));
             }
         }
     }
 
     return (
-        <View style={styles.container}>
+        <View style={[styles.container, { height: height * 0.55 }]}>
             {
                 !imageData ? (
                     <>
@@ -86,7 +105,6 @@ function CameraContainer() {
 const styles = StyleSheet.create({
     container: {
         marginVertical: 32,
-        height: 500,
         backgroundColor: "#B7E5E4",
         borderRadius: 20,
         padding: 16,

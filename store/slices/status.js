@@ -2,7 +2,12 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
     uploading: false,
     uploaded: false,
-    bottomTab: 'TOP',
+    global: {
+        bottomTab: 'TOP',
+    },
+    closeUp: {
+        bottomTab: 'TOP',
+    },
     isGlobal: true,
 };
 const statusSlice = createSlice({
@@ -16,7 +21,11 @@ const statusSlice = createSlice({
             state.uploaded = action.payload;
         },
         setBottomTab: (state, action) => {
-            state.bottomTab = action.payload;
+            if (state.isGlobal) {
+                state.global.bottomTab = action.payload;
+            } else {
+                state.closeUp.bottomTab = action.payload;
+            }
         },
         toggleIsGlobal: (state, action) => {
             state.isGlobal = action.payload;

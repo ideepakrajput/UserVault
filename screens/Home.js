@@ -7,7 +7,7 @@ import { StyleSheet, View } from 'react-native';
 
 const Home = ({ navigation }) => {
     return (
-        <View style={{ flex: 1, justifyContent: "space-between", alignItems: "center", backgroundColor: "#3E6975", gap: 32 }}>
+        <View style={{ flex: 1, justifyContent: "space-between", backgroundColor: "#3E6975", gap: 32 }}>
             <View style={styles.container}>
                 <Header navigation={navigation} />
                 <CameraContainer />
