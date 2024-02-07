@@ -27,7 +27,7 @@ function CameraContainer() {
     useEffect(() => {
         if (!hasPermission)
             requestPermission();
-    }, [])
+    }, [hasPermission])
 
     if (device == null) return <ActivityIndicator />
 
@@ -79,13 +79,13 @@ function CameraContainer() {
             {
                 !imageData ? (
                     <>
-                        <Camera
+                        {hasPermission && <Camera
                             style={[StyleSheet.absoluteFill, styles.cameraContainer]}
                             device={device}
                             isActive={true}
                             ref={camera}
                             photo={true}
-                        />
+                        />}
                         <View>
 
                         </View>
