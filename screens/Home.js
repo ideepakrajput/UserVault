@@ -22,8 +22,7 @@ const Home = ({ navigation }) => {
 
 const styles = StyleSheet.create({
     container: {
-        paddingHorizontal: 32,
-        paddingTop: 32,
+        paddingHorizontal: 30,
     },
 });
 

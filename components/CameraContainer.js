@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { ActivityIndicator, Dimensions, Image, StyleSheet, TouchableOpacity, View } from "react-native";
+import { ActivityIndicator, Image, StyleSheet, TouchableOpacity, View, useWindowDimensions } from "react-native";
 import { Camera, useCameraDevice, useCameraPermission } from "react-native-vision-camera";
 import { useDispatch, useSelector } from "react-redux";
 import { imagesActions } from "../store/slices/images";
@@ -16,7 +16,8 @@ function CameraContainer() {
 
     const dispatch = useDispatch();
 
-    const { height } = Dimensions.get("screen");
+    const { height, width } = useWindowDimensions();
+
     const globalCloseUp = status.isGlobal ? "global" : "closeUp";
     const bottomTab = status[globalCloseUp].bottomTab;
 
@@ -75,7 +76,7 @@ function CameraContainer() {
     }
 
     return (
-        <View style={[styles.container, { height: height * 0.55 }]}>
+        <View style={[styles.container, { height: height * 0.6 }]}>
             {
                 !imageData ? (
                     <>
@@ -104,26 +105,26 @@ function CameraContainer() {
 
 const styles = StyleSheet.create({
     container: {
-        marginVertical: 32,
+        marginVertical: 30,
         backgroundColor: "#B7E5E4",
         borderRadius: 20,
-        padding: 16,
         justifyContent: "space-between",
         alignItems: "center",
+        gap: 30,
     },
     cameraContainer: {
-        margin: 20,
-        height: "80%",
+        margin: 30,
+        height: "72%",
     },
     image: {
         width: "100%",
         height: "100%",
     },
     captureButton: {
-        width: 60,
-        height: 60,
+        width: 56,
+        height: 56,
         borderRadius: 50,
-        borderWidth: 5,
+        borderWidth: 6,
         borderColor: "rgba(243, 175, 142, 0.5)",
         backgroundColor: "#F3AF8E",
     }

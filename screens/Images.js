@@ -11,14 +11,14 @@ function Images({ navigation }) {
         navigation.navigate("ProgressBar")
     }
     return (
-        <SafeAreaView style={{ flex: 1, justifyContent: "space-between", backgroundColor: "#3E6975", }}>
+        <SafeAreaView style={{ flex: 1, justifyContent: "space-between", backgroundColor: "#3E6975", paddingHorizontal: 30 }}>
             <View style={{ gap: 32 }}>
                 {status.isGlobal ?
                     <>
                         <View>
                             <Text style={[styles.text, { color: "rgba(183, 229, 228, 0.9)", marginTop: 32 }]}>{images.globalCount} Global Images</Text>
                         </View>
-                        <View style={{ height: 375, paddingHorizontal: 45 }}>
+                        <View style={{ height: 375 }}>
                             <View style={styles.imagesContainer}>
                                 <ImageContainer globalCloseUp="global" />
                             </View>
@@ -29,7 +29,7 @@ function Images({ navigation }) {
                         <View>
                             <Text style={[styles.text, { color: "rgba(183, 229, 228, 0.9)", marginTop: 32 }]}>{images.closeUpCount} Close Up Images</Text>
                         </View>
-                        <View style={{ height: 375, paddingHorizontal: 45 }}>
+                        <View style={{ height: 375 }}>
                             <View style={styles.imagesContainer}>
                                 <ImageContainer globalCloseUp="closeUp" />
                             </View>
@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
     button: {
         paddingVertical: 16,
         borderRadius: 8,
-        margin: 28,
+        marginVertical: 30,
         backgroundColor: "#F3AF8E",
     },
     text: {

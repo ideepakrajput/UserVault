@@ -51,7 +51,7 @@ const ImageContainer = ({ globalCloseUp }) => {
 
 const styles = StyleSheet.create({
     images: {
-        width: 150,
+        width: 167,
         height: 180,
         borderRadius: 8,
     },

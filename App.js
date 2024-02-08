@@ -6,6 +6,7 @@ import Done from './screens/Done';
 import ProgressBar from './screens/ProgressBar';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { StatusBar } from 'react-native';
 
 const App = () => {
 
@@ -13,6 +14,8 @@ const App = () => {
   return (
     <Provider store={store}>
       <NavigationContainer>
+        <StatusBar animated={true}
+          backgroundColor="#3E6975" />
         <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName="Home">
           <Stack.Screen name='Home' component={Home} />
           <Stack.Screen name='Images' component={Images} />

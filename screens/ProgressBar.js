@@ -79,7 +79,7 @@ function ProgressBar({ navigation }) {
     }
 
     return (
-        <SafeAreaView style={{ flex: 1, justifyContent: "center", alignItems: "center", backgroundColor: "#3E6975", gap: 8 }}>
+        <SafeAreaView style={{ flex: 1, justifyContent: "center", alignItems: "center", backgroundColor: "#3E6975", gap: 20 }}>
             <ProgressBarIndicator progress={progress} />
             <View>
                 <Text style={styles.text}>{progress}% in progress</Text>

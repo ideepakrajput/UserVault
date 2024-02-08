@@ -27,17 +27,17 @@ function GlobalClosedButton({ globalCount, closeUpCount }) {
 const styles = StyleSheet.create({
     container: {
         backgroundColor: "#B7E5E4",
-        marginHorizontal: 20,
         flexDirection: "row",
         justifyContent: "space-between",
         alignItems: "center",
         borderRadius: 50,
+        marginHorizontal: 30,
     },
     button: {
-        paddingVertical: 8,
+        paddingVertical: 7,
         borderRadius: 50,
-        width: "48%",
-        margin: 4
+        margin: 6,
+        width: "45%"
     },
     active: {
         backgroundColor: "#F3AF8E",

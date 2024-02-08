@@ -61,7 +61,7 @@ function BottomAction() {
                     </View>
                     :
                     <TouchableOpacity style={[styles.imageButton, [bottomTab === 'TOP' && styles.active], [bottomTab === 'LEFT' && { borderTopRightRadius: 30 }]]} onPress={() => dispatch(statusActions.setBottomTab('TOP'))}>
-                        <View>
+                        <View style={{ gap: 10 }}>
                             <Image style={styles.image} source={require("../assets/images/image2.png")}>
                             </Image>
                             <Text style={[bottomTab === 'TOP' ? styles.activeText : styles.text]}>Top</Text>
@@ -86,7 +86,7 @@ function BottomAction() {
                     </View>
                     :
                     <TouchableOpacity style={[styles.imageButton, [bottomTab === 'LEFT' && styles.active], [bottomTab === 'TOP' && { borderTopLeftRadius: 30 }, [bottomTab === 'FRONTAL' && { borderTopRightRadius: 30 }]]]} onPress={() => dispatch(statusActions.setBottomTab('LEFT'))}>
-                        <View>
+                        <View style={{ gap: 10 }}>
                             <Image style={styles.image} source={require("../assets/images/image3.png")}>
                             </Image>
                             <Text style={[bottomTab === 'LEFT' ? styles.activeText : styles.text]}>Left</Text>
@@ -111,7 +111,7 @@ function BottomAction() {
                     </View>
                     :
                     <TouchableOpacity style={[styles.imageButton, [bottomTab === 'FRONTAL' && styles.active], [bottomTab === 'LEFT' && { borderTopLeftRadius: 30 }], [bottomTab === 'RIGHT' && { borderTopRightRadius: 30 }]]} onPress={() => dispatch(statusActions.setBottomTab('FRONTAL'))}>
-                        <View>
+                        <View style={{ gap: 10 }}>
                             <Image style={styles.image} source={require("../assets/images/image1.png")}>
                             </Image>
                             <Text style={[bottomTab === 'FRONTAL' ? styles.activeText : styles.text]}>Frontal</Text>
@@ -136,7 +136,7 @@ function BottomAction() {
                     </View>
                     :
                     <TouchableOpacity style={[styles.imageButton, [bottomTab === 'RIGHT' && styles.active], [bottomTab === 'FRONTAL' && { borderTopLeftRadius: 30 }]]} onPress={() => dispatch(statusActions.setBottomTab('RIGHT'))}>
-                        <View>
+                        <View style={{ gap: 10 }}>
                             <Image style={styles.image} source={require("../assets/images/image4.png")}>
                             </Image>
                             <Text style={[bottomTab === 'RIGHT' ? styles.activeText : styles.text]}>Right</Text>
@@ -160,8 +160,9 @@ const styles = StyleSheet.create({
         gap: 8
     },
     image: {
-        height: 100,
-        width: 100,
+        height: 85,
+        width: 85,
+        padding: 16,
     },
     active: {
         backgroundColor: "#3E6975",
@@ -179,7 +180,7 @@ const styles = StyleSheet.create({
         color: "#B7E5E4",
     },
     images: {
-        width: 132,
+        width: 117,
         height: 150,
         resizeMode: "cover",
     },
@@ -192,7 +193,6 @@ const styles = StyleSheet.create({
         flexDirection: "column",
         gap: 16,
         alignItems: "center",
-        height: 150,
         justifyContent: "space-evenly"
     },
     overlayText: {

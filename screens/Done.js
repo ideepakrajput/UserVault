@@ -15,10 +15,10 @@ const Done = ({ navigation }) => {
     }
     return (
         <SafeAreaView style={{ flex: 1, justifyContent: "center", alignItems: "center", backgroundColor: "#3E6975" }}>
-            <View style={{ backgroundColor: "#B7E5E4", width: 317, justifyContent: "center", alignItems: "center", borderRadius: 8, paddingVertical: 16, paddingHorizontal: 16, gap: 8 }}>
-                <Feather name="check-circle" size={56} color="rgba(40, 171, 114, 1)" />
-                <Text style={[styles.text, { color: "#3E6975", fontSize: 20 }]}>Successful</Text>
-                <Text style={[styles.text, { textAlign: "center" }]}>{`Your ${images.globalCount} global images and ${images.closeUpCount} close up images are successfully uploaded.`}</Text>
+            <View style={{ backgroundColor: "#B7E5E4", width: 317, justifyContent: "center", alignItems: "center", borderRadius: 8, paddingVertical: 16, paddingHorizontal: 28 }}>
+                <Feather name="check-circle" size={60} color="rgba(40, 171, 114, 1)" style={{ marginTop: 20 }} />
+                <Text style={[styles.text, { color: "#3E6975", fontSize: 20, marginTop: 11 }]}>Successful</Text>
+                <Text style={[styles.text, { textAlign: "center", marginTop: 8 }]}>{`Your ${images.globalCount} global images and ${images.closeUpCount} close up images are successfully uploaded.`}</Text>
                 <TouchableOpacity style={styles.button}><Text style={[styles.text, { color: "#FFFFFF" }]} onPress={() => goToHome()}>Go back to home</Text></TouchableOpacity>
             </View>
         </SafeAreaView>
@@ -28,9 +28,10 @@ const Done = ({ navigation }) => {
 const styles = StyleSheet.create({
     button: {
         backgroundColor: "#515151",
-        paddingHorizontal: 20,
-        paddingVertical: 8,
-        borderRadius: 8,
+        paddingHorizontal: 30,
+        marginTop: 20,
+        paddingVertical: 6,
+        borderRadius: 10,
     },
     text: {
         fontSize: 16,
