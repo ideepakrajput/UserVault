@@ -42,7 +42,7 @@ function Images({ navigation }) {
                 </View>
             </View>
             <View>
-                <TouchableOpacity style={styles.button}><Text style={styles.text} onPress={uploadImages}>Upload</Text></TouchableOpacity>
+                <TouchableOpacity onPress={uploadImages} style={styles.button}><Text style={styles.text} >Upload</Text></TouchableOpacity>
             </View>
         </SafeAreaView>
     )
