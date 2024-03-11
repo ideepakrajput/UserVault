@@ -7,16 +7,19 @@ import ProgressBar from './screens/ProgressBar';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { StatusBar } from 'react-native';
+import LoginSIgnup from './screens/LoginSIgnup';
 
 const App = () => {
 
   const Stack = createNativeStackNavigator();
+
   return (
     <Provider store={store}>
       <NavigationContainer>
         <StatusBar animated={true}
           backgroundColor="#3E6975" />
-        <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName="Home">
+        <Stack.Navigator screenOptions={{ headerShown: false }}>
+          <Stack.Screen name='LoginSignup' component={LoginSIgnup} />
           <Stack.Screen name='Home' component={Home} />
           <Stack.Screen name='Images' component={Images} />
           <Stack.Screen name='ProgressBar' component={ProgressBar} />
