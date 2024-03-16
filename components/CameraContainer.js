@@ -76,7 +76,7 @@ function CameraContainer() {
     }
 
     return (
-        <View style={[styles.container, { height: height * 0.6 }]}>
+        <View style={[styles.container, { height: height * 0.5 }]}>
             {
                 !imageData ? (
                     <>
@@ -114,7 +114,7 @@ const styles = StyleSheet.create({
     },
     cameraContainer: {
         margin: 30,
-        height: "72%",
+        height: "65%",
     },
     image: {
         width: "100%",

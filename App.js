@@ -19,8 +19,8 @@ const App = () => {
         <StatusBar animated={true}
           backgroundColor="#3E6975" />
         <Stack.Navigator screenOptions={{ headerShown: false }}>
-          <Stack.Screen name='LoginSignup' component={LoginSIgnup} />
           <Stack.Screen name='Home' component={Home} />
+          <Stack.Screen name='LoginSignup' component={LoginSIgnup} />
           <Stack.Screen name='Images' component={Images} />
           <Stack.Screen name='ProgressBar' component={ProgressBar} />
           <Stack.Screen name='Done' component={Done} />

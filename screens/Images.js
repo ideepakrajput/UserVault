@@ -18,7 +18,7 @@ function Images({ navigation }) {
                         <View>
                             <Text style={[styles.text, { color: "rgba(183, 229, 228, 0.9)", marginTop: 32 }]}>{images.globalCount} Global Images</Text>
                         </View>
-                        <View style={{ height: 375 }}>
+                        <View style={{ height: 375,width:"100%" }}>
                             <View style={styles.imagesContainer}>
                                 <ImageContainer globalCloseUp="global" />
                             </View>
